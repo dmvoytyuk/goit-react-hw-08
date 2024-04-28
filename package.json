@@ -10,12 +10,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@reduxjs/toolkit": "^2.2.3",
+    "axios": "^1.6.8",
+    "clsx": "^2.1.1",
+    "formik": "^2.4.6",
+    "prettier": "^3.2.5",
+    "react": "^18.3.0",
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^6.1.6",
+    "react-redux": "^9.1.1",
+    "react-router-dom": "^6.23.0",
+    "redux-persist": "^6.0.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",

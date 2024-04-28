@@ -1,0 +1,15 @@
+.link {
+    padding: 5px;
+    color: antiquewhite;
+}
+.activeLink {
+    color: black;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+.links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

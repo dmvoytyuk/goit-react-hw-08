@@ -1,0 +1,30 @@
+.contact {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	align-items: center;
+	width: 200px;
+	padding: 10px;
+	justify-content: space-between;
+	overflow: hidden
+}
+
+.contact>button {
+	height: 20px;
+}
+
+.contact>div {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.contact>div>p {
+	max-width: 190px;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	overflow-wrap: anywhere;
+}

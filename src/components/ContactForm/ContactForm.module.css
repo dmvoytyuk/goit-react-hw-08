@@ -1,0 +1,27 @@
+.contactForm {
+	width: 250px;
+	border: 1px solid #000;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 10px;
+	margin-bottom: 20px;
+	align-items: center;
+}
+
+.contactLabel {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.contactForm>button {
+	width: max-content;
+	margin: 0 auto;
+}
+
+.contactValidationError {
+	font-size: 12px;
+	margin: 0;
+	color: red;
+}
