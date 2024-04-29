@@ -14,7 +14,9 @@ const UserMenu = () => {
   return (
     <div className={styles.userMenu}>
       <p>Hello, {user.name}</p>
-      <button onClick={onLogout}>Log Out</button>
+      <button className={styles.userMenuButton} onClick={onLogout}>
+        Log Out
+      </button>
     </div>
   );
 };
