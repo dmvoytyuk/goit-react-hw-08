@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logout } from "../auth/operations.js";
 import { addContact, deleteContact, getContacts } from "./operations.js";
 
 const INITIAL_STATE = {
@@ -6,6 +7,8 @@ const INITIAL_STATE = {
   isLoading: false,
   isDeleting: false,
   deletingContactId: null,
+  successfullyAdded: false,
+  successfullyDeleted: false,
   isError: false,
 };
 
@@ -36,10 +39,13 @@ export const contactsSlice = createSlice({
       .addCase(addContact.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
+        state.successfullyAdded = false;
+        state.successfullyDeleted = false;
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
+        state.successfullyAdded = true;
         state.contacts = [...state.contacts, action.payload];
       })
       .addCase(addContact.rejected, (state) => {
@@ -50,11 +56,14 @@ export const contactsSlice = createSlice({
         state.isLoading = false;
         state.isDeleting = true;
         state.isError = false;
+        state.successfullyDeleted = false;
+        state.successfullyAdded = false;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isDeleting = false;
         state.isError = false;
+        state.successfullyDeleted = true;
         state.deletingContactId = null;
         state.contacts = state.contacts.filter(
           (contact) => contact.id !== action.payload.id,
@@ -63,6 +72,9 @@ export const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.contacts = null;
       }),
 });
 

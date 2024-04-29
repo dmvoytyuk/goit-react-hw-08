@@ -47,7 +47,11 @@ const ContactForm = () => {
       <Form className={styles.contactForm}>
         <label className={styles.contactLabel}>
           {"Name"}
-          <Field type="text" name="contactName" />
+          <Field
+            className={styles.contactFormInput}
+            type="text"
+            name="contactName"
+          />
           <ErrorMessage
             className={styles.contactValidationError}
             component="p"
@@ -56,7 +60,11 @@ const ContactForm = () => {
         </label>
         <label className={styles.contactLabel}>
           {"Number"}
-          <Field type="tel" name="contactNumber" />
+          <Field
+            className={styles.contactFormInput}
+            type="tel"
+            name="contactNumber"
+          />
           <ErrorMessage
             className={styles.contactValidationError}
             component="p"

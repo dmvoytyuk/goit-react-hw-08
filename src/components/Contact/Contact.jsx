@@ -34,7 +34,7 @@ const Contact = ({ contact }) => {
       {!isDeleting || deletingContactId !== contact.id ? (
         <button onClick={onDelete}>Delete</button>
       ) : (
-        deletingContactId === contact.id && <Loader />
+        deletingContactId === contact.id && <Loader color="#2F699E" />
       )}
     </li>
   );

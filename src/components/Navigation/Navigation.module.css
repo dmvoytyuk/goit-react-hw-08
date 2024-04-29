@@ -1,11 +1,10 @@
 .link {
     padding: 5px;
-    color: antiquewhite;
+    color: white;
 }
 .activeLink {
-    color: black;
-    background-color: aliceblue;
-    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: underline;
 }
 .links {
     width: 100%;

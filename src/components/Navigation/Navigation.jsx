@@ -19,9 +19,16 @@ const Navigation = () => {
   return (
     <>
       <nav className={styles.links}>
-        <NavLink className={isLinkActive} to="/">
-          Home
-        </NavLink>
+        <div>
+          <NavLink className={isLinkActive} to="/">
+            Home
+          </NavLink>
+          {isLoggedIn && (
+            <NavLink className={isLinkActive} to="/contacts">
+              /Contacts
+            </NavLink>
+          )}
+        </div>
         {!isLoggedIn && !isLoading ? (
           <AuthNav>
             <NavLink className={isLinkActive} to="/register">
@@ -32,7 +39,7 @@ const Navigation = () => {
             </NavLink>
           </AuthNav>
         ) : (
-          isLoading && <Loader />
+          isLoading && <Loader color={"white"} />
         )}
         {isLoggedIn && !isLoading && <UserMenu />}
       </nav>

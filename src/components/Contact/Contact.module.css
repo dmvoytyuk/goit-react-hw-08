@@ -2,13 +2,14 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	border: 1px solid #000;
 	border-radius: 5px;
 	align-items: center;
-	width: 200px;
+	width: 226px;
 	padding: 10px;
 	justify-content: space-between;
-	overflow: hidden
+	background-color: white;
+	box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.25);
+
 }
 
 .contact>button {

@@ -12,7 +12,19 @@ export const register = createAsyncThunk(
     try {
       return await apiRegisterUser(user);
     } catch (e) {
-      return thunkApi.rejectWithValue(e.code);
+      if (e.response.data.message) {
+        return thunkApi.rejectWithValue(
+          e.response.data.errors.password.message,
+        );
+      } else if (e.response.data.code) {
+        return thunkApi.rejectWithValue(
+          `Email ${e.response.data.keyValue.email} already exists`,
+        );
+      } else {
+        return thunkApi.rejectWithValue(
+          "Something went wrong, please try again",
+        );
+      }
     }
   },
 );
@@ -21,7 +33,11 @@ export const login = createAsyncThunk("auth/login", async (user, thunkApi) => {
   try {
     return await apiLoginUser(user);
   } catch (e) {
-    return thunkApi.rejectWithValue(e.code);
+    if (e.response.status === 400) {
+      return thunkApi.rejectWithValue("Wrong email or password");
+    } else {
+      return thunkApi.rejectWithValue("Something went wrong, please try again");
+    }
   }
 });
 
@@ -31,7 +47,7 @@ export const refreshUser = createAsyncThunk(
     try {
       return await apiRefreshUser(token);
     } catch (e) {
-      return thunkApi.rejectWithValue(e.code);
+      return thunkApi.rejectWithValue(e.message);
     }
   },
 );
@@ -42,7 +58,7 @@ export const logout = createAsyncThunk(
     try {
       return await apiLogout(token);
     } catch (e) {
-      return thunkApi.rejectWithValue(e.code);
+      return thunkApi.rejectWithValue(e.message);
     }
   },
 );

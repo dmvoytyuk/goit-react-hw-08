@@ -9,6 +9,8 @@ const INITIAL_STATE = {
   isLoading: false,
   isError: false,
   error: null,
+  successfullyLoggedIn: false,
+  successfullyRegistered: false,
 };
 
 export const authSlice = createSlice({
@@ -25,6 +27,26 @@ export const authSlice = createSlice({
       .addCase(logout.fulfilled, () => {
         return INITIAL_STATE;
       })
+      .addCase(register.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isLoggedIn = true;
+        state.error = null;
+        state.successfullyRegistered = true;
+        state.successfullyLoggedIn = false;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isLoggedIn = true;
+        state.error = null;
+        state.successfullyLoggedIn = true;
+        state.successfullyRegistered = false;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+      })
       .addMatcher(
         isAnyOf(
           register.pending,
@@ -36,6 +58,8 @@ export const authSlice = createSlice({
           state.isLoading = true;
           state.isError = false;
           state.error = null;
+          state.successfullyLoggedIn = false;
+          state.successfullyRegistered = false;
         },
       )
       .addMatcher(
@@ -49,17 +73,8 @@ export const authSlice = createSlice({
           state.isLoading = false;
           state.isError = true;
           state.error = action.payload;
-        },
-      )
-      .addMatcher(
-        isAnyOf(register.fulfilled, login.fulfilled),
-        (state, action) => {
-          state.isLoading = false;
-          state.isError = false;
-          state.isLoggedIn = true;
-          state.error = null;
-          state.user = action.payload.user;
-          state.token = action.payload.token;
+          state.successfullyRegistered = false;
+          state.successfullyLoggedIn = false;
         },
       ),
 });

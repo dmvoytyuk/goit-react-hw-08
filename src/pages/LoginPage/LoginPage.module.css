@@ -1,0 +1,41 @@
+.loginForm {
+    margin: 0 auto;
+    width: 250px;
+    height: 210px;
+    display: flex;
+    /*align-items: center;*/
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+    padding: 5px;
+
+}
+.loginFormLabel {
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+}
+
+.loginFormInput {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 3px;
+    color: #4D4D4D;
+}
+
+.loginFormError {
+    font-size: 12px;
+    margin: 0;
+    color: red;
+}
+
+.loginFormButton {
+    width: max-content;
+    margin: 0 auto;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    color: #4D4D4D;
+}

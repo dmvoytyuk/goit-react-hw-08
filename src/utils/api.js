@@ -6,7 +6,12 @@ const axiosInstance = axios.create({
 
 export const apiRegisterUser = async (user) => {
   axiosInstance.defaults.headers.common["Authorization"] = ``;
-  const response = await axiosInstance.post("/users/signup", user);
+  const response = await axiosInstance
+    .post("/users/signup", user)
+    .then((response) => {
+      return response;
+    });
+
   return response.data;
 };
 
