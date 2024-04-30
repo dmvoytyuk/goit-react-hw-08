@@ -1,6 +1,8 @@
 .contact {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+align-items: center;
 	gap: 10px;
 	border-radius: 5px;
 	width: 226px;
@@ -10,6 +12,7 @@
 }
 
 .contactInfo {
+	width: 100%;
 	display: flex;
 	/* justify-content: space-evenly; */
 	align-items: center;
