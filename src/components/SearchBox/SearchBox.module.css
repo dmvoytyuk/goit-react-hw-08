@@ -1,12 +1,9 @@
-.searchBox {
-    margin-bottom: 25px;
-}
 .searhcInput {
-    height: 30px;
-    width: 226px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    padding-left: 10px;
-    font-size: 14px;
+	height: 30px;
+	width: 226px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	padding-left: 10px;
+	font-size: 14px;
 }

@@ -26,17 +26,42 @@ const Contact = ({ contact }) => {
 		dispatch(deleteContact(data));
 	};
 
+	const bgcolors = [
+		'#00AA55',
+		'#009FD4',
+		'#B381B3',
+		'#939393',
+		'#E3BC00',
+		'#D47500',
+		'#DC2A2A',
+	];
+
+	const randomBgColor = bgcolors[Math.floor(Math.random() * bgcolors.length)];
+	let splitName;
+
+	if (contact) {
+		splitName = contact.name.split(' ');
+	}
+	const initials = splitName[0][0] + splitName[1][0];
+
 	return (
 		<li className={styles.contact}>
-			<div>
-				<div>Contact Avatar</div>
-				<div>
+			<div className={styles.contactInfo}>
+				<div
+					style={{ backgroundColor: randomBgColor }}
+					className={styles.contactAvatar}
+				>
+					{initials}
+				</div>
+				<div className={styles.contactData}>
 					<h4>{contact.name}</h4>
 					<p>{contact.number}</p>
 				</div>
 			</div>
 			{!isDeleting || deletingContactId !== contact.id ? (
-				<button onClick={onDelete}>Delete</button>
+				<button className={styles.contactButton} onClick={onDelete}>
+					Delete
+				</button>
 			) : (
 				deletingContactId === contact.id && <Loader color="#2F699E" />
 			)}

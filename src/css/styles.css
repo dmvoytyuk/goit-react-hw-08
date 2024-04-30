@@ -1,38 +1,42 @@
 * {
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
-    margin: 0;
-    scroll-behavior: smooth;
-    padding-bottom: 40px;
-    background-color: #D9D9D9;
-    color: #333333;
-    max-width: 768px;
-    margin: 0 auto;
+	scroll-behavior: smooth;
+	padding-bottom: 40px;
+	background-color: #d9d9d9;
+	color: #333333;
+	max-width: 768px;
+	margin: 0 auto;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 button {
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
 }
 
 p {
-    margin: 0;
+	margin: 0;
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
 }
