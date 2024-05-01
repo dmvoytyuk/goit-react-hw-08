@@ -43,7 +43,6 @@ const ContactForm = () => {
       number: formValues.contactNumber,
     };
     dispatch(addContact({ token, newContact }));
-
     actions.resetForm();
   };
 
