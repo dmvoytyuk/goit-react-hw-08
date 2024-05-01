@@ -5,11 +5,11 @@
 
 body {
 	scroll-behavior: smooth;
-	padding-bottom: 40px;
 	background-color: #d9d9d9;
 	color: #333333;
 	max-width: 768px;
 	margin: 0 auto;
+	height: 100%;
 }
 
 ul {
