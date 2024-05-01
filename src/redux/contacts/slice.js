@@ -20,6 +20,12 @@ export const contactsSlice = createSlice({
     setDeletingContactId: (state, action) => {
       state.deletingContactId = action.payload;
     },
+    setSuccessfullyDeleted: (state, action) => {
+      state.successfullyDeleted = action.payload;
+    },
+    setSuccessfullyAdded: (state, action) => {
+      state.successfullyAdded = action.payload;
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -75,10 +81,14 @@ export const contactsSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
       })
-      .addCase(logout.fulfilled, (state) => {
-        state.contacts = null;
+      .addCase(logout.fulfilled, () => {
+        return INITIAL_STATE;
       }),
 });
 
-export const { setDeletingContactId } = contactsSlice.actions;
+export const {
+  setDeletingContactId,
+  setSuccessfullyDeleted,
+  setSuccessfullyAdded,
+} = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
