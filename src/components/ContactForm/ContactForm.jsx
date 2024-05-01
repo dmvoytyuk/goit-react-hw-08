@@ -8,6 +8,7 @@ import {
   selectIsLoading,
   selectSuccessfullyAdded,
 } from "../../redux/contacts/selectors.js";
+import AddIcon from "../AddIcon/AddIcon.jsx";
 import Loader from "../Loader/Loader.jsx";
 
 import styles from "./ContactForm.module.css";
@@ -52,21 +53,17 @@ const ContactForm = () => {
 
   useEffect(() => {
     const handleClick = (e) => {
-      if (
-        e.target.form !== ref.current &&
-        e.target !== ref.current &&
-        e.target.offsetParent !== ref.current
-      ) {
+      if (ref.current && !ref.current.contains(e.target)) {
         if (e.target.name === "showForm" && showForm === false) {
           return;
         }
         setShowForm(false);
       }
     };
-    document.body.addEventListener("click", handleClick);
+    document.addEventListener("click", handleClick);
 
     return () => {
-      document.body.removeEventListener("click", handleClick);
+      document.removeEventListener("click", handleClick);
     };
   }, []);
 
@@ -85,8 +82,7 @@ const ContactForm = () => {
           type="button"
           onClick={onShowForm}
         >
-          Add new contact
-          {/*{<AddIcon />}*/}
+          {<AddIcon />}
         </button>
       )}
       {showForm === true && (

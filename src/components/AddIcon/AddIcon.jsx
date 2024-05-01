@@ -1,6 +1,9 @@
+import styles from "./AddIcon.module.css";
+
 const AddIcon = () => {
   return (
     <svg
+      className={styles.addIcon}
       width="30"
       height="30"
       viewBox="0 0 30 30"
