@@ -1,6 +1,6 @@
 const NotFoundPage = () => {
   return (
-    <div>
+    <div style={{ width: "fit-content", margin: "0 auto" }}>
       <p>Page Not Found</p>
     </div>
   );

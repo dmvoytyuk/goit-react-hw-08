@@ -6,6 +6,7 @@ import { refreshUser } from "../../redux/auth/operations.js";
 import {
   selectError,
   selectIsError,
+  selectIsRefreshing,
   selectSuccessfullyLoggedIn,
   selectSuccessfullyRegistered,
   selectToken,
@@ -32,6 +33,7 @@ function App() {
   const successfullyRegistered = useSelector(selectSuccessfullyRegistered);
   const isError = useSelector(selectIsError);
   const error = useSelector(selectError);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser(token));
@@ -57,38 +59,48 @@ function App() {
 
   return (
     <>
-      <Layout>
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute>
-                  <RegistrationPage />
-                </RestrictedRoute>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <RestrictedRoute>
-                  <LoginPage />
-                </RestrictedRoute>
-              }
-            />
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute>
-                  <ContactsPage />
-                </PrivateRoute>
-              }
-            />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-      </Layout>
+      {isRefreshing === false ? (
+        <Layout>
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/register"
+                element={
+                  <RestrictedRoute
+                    component={<RegistrationPage />}
+                    redirectTo="/contacts"
+                  />
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <RestrictedRoute
+                    component={<LoginPage />}
+                    redirectTo="/contacts"
+                  />
+                }
+              />
+              <Route
+                path="/contacts"
+                element={
+                  <PrivateRoute
+                    component={<ContactsPage />}
+                    redirectTo="/login"
+                  />
+                }
+              />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </Layout>
+      ) : (
+        <div style={{ margin: "0 auto", width: "fit-content" }}>
+          {" "}
+          <Loader />
+        </div>
+      )}
       <Toaster />
     </>
   );

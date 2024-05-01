@@ -8,3 +8,4 @@ export const selectSuccessfullyLoggedIn = (state) =>
   state.auth.successfullyLoggedIn;
 export const selectSuccessfullyRegistered = (state) =>
   state.auth.successfullyRegistered;
+export const selectIsRefreshing = (state) => state.auth.isRefreshing;

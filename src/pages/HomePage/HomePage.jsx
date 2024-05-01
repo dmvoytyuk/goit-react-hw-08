@@ -13,7 +13,7 @@ const HomePage = () => {
     <div className={styles.homePage}>
       {isLoggedIn ? (
         <p>
-          Welcome, {user.name}, manage your contact{" "}
+          Welcome, {user.name}, manage your contacts{" "}
           <Link to="/contacts">here</Link>
         </p>
       ) : (

@@ -62,11 +62,6 @@ const ContactForm = () => {
           return;
         }
         setShowForm(false);
-        console.log(showForm);
-        // if (showForm === true) {
-        //   console.log("hide form");
-        //   setShowForm(false);
-        // }
       }
     };
     document.body.addEventListener("click", handleClick);

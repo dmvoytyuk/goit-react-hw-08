@@ -23,6 +23,7 @@ export const authSlice = createSlice({
         state.isError = false;
         state.isLoggedIn = true;
         state.user = action.payload;
+        state.isRefreshing = false;
       })
       .addCase(logout.fulfilled, () => {
         return INITIAL_STATE;
@@ -47,19 +48,23 @@ export const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
       })
+      .addCase(refreshUser.pending, (state) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.error = null;
+        state.successfullyLoggedIn = false;
+        state.successfullyRegistered = false;
+        state.isRefreshing = true;
+      })
       .addMatcher(
-        isAnyOf(
-          register.pending,
-          login.pending,
-          refreshUser.pending,
-          logout.pending,
-        ),
+        isAnyOf(register.pending, login.pending, logout.pending),
         (state) => {
           state.isLoading = true;
           state.isError = false;
           state.error = null;
           state.successfullyLoggedIn = false;
           state.successfullyRegistered = false;
+          state.isRefreshing = false;
         },
       )
       .addMatcher(
@@ -75,6 +80,7 @@ export const authSlice = createSlice({
           state.error = action.payload;
           state.successfullyRegistered = false;
           state.successfullyLoggedIn = false;
+          state.isRefreshing = false;
         },
       ),
 });

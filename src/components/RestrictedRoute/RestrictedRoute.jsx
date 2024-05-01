@@ -2,10 +2,9 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 
-// eslint-disable-next-line react/prop-types
-const RestrictedRoute = ({ children }) => {
+const RestrictedRoute = ({ component, redirectTo }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  return isLoggedIn ? <Navigate to="/contacts" replace /> : children;
+  return isLoggedIn ? <Navigate to={redirectTo} replace /> : component;
 };
 
 export default RestrictedRoute;

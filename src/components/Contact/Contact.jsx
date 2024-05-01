@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/selectors.js";
@@ -44,7 +42,7 @@ const Contact = ({ contact }) => {
   if (contact) {
     splitName = contact.name.split(" ");
   }
-  let initials = "";
+  let initials;
   if (splitName.length > 1) {
     initials = splitName[0][0] + splitName[1][0];
   } else {
