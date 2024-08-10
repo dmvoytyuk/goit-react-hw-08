@@ -7,20 +7,18 @@ const Navigation = ({ isLinkActive }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <>
-      <nav className={styles.links}>
-        <div>
-          <NavLink className={isLinkActive} to="/">
-            Home
+    <nav className={styles.links}>
+      <div>
+        <NavLink className={isLinkActive} to="/">
+          Home
+        </NavLink>
+        {isLoggedIn && (
+          <NavLink className={isLinkActive} to="/contacts">
+            /Contacts
           </NavLink>
-          {isLoggedIn && (
-            <NavLink className={isLinkActive} to="/contacts">
-              /Contacts
-            </NavLink>
-          )}
-        </div>
-      </nav>
-    </>
+        )}
+      </div>
+    </nav>
   );
 };
 

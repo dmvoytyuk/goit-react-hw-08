@@ -91,4 +91,5 @@ export const {
   setSuccessfullyDeleted,
   setSuccessfullyAdded,
 } = contactsSlice.actions;
+
 export const contactsReducer = contactsSlice.reducer;
